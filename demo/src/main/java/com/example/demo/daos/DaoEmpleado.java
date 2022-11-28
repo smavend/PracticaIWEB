@@ -50,14 +50,14 @@ public class DaoEmpleado extends DaoBase{
         }
         return empleado;
     }
-    public boolean validarEmpleado (int idEmpleado, BigDecimal passw){
+    public boolean validarEmpleado (int idEmpleado, double passw){
         boolean valid = false;
         String sql = "SELECT * FROM empleado where idempleado = ? and dni-salario = ?";
 
         try(Connection connection = this.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql)){
             pstmt.setInt(1,idEmpleado);
-            pstmt.setBigDecimal(2,passw);
+            pstmt.setDouble(2,passw);
             try(ResultSet rs = pstmt.executeQuery()){
                 if(rs.next()){
                     valid = true;
