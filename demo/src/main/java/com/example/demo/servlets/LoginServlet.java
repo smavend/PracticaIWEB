@@ -30,6 +30,9 @@ public class LoginServlet extends HttpServlet {
                 vista.forward(request, response);
 
                 break;
+
+            case "logout":
+                break;
         }
 
     }
@@ -62,6 +65,9 @@ public class LoginServlet extends HttpServlet {
 
                     ArrayList<Cartelera> cartelera = daoCartelera.obtenerCartelera();
                     request.setAttribute("cartelera", cartelera);
+
+                    HttpSession session = request.getSession();
+                    session.setAttribute("empleado", empleado);
 
                     vista = request.getRequestDispatcher("vendedor.jsp");
                     vista.forward(request, response);
