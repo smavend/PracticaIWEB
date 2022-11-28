@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.demo.beans.Cartelera" %><%--
   Created by IntelliJ IDEA.
   User: Labtel
   Date: 28/11/2022
@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<jsp:useBean id="cartelera" scope="request" type="java.util.ArrayList<com.example.demo.beans.Cartelera>"></jsp:useBean>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -32,12 +33,28 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <%for (Cartelera c: cartelera){%>
                     <tr>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                        <td>AAA</td>
-                        <td>AAA</td>
+                        <td><%=c.getCine().getCadena().getNombreComercial()%></td>
+                        <td><%=c.getCine().getNombre()%></td>
+                        <td><%=c.getPelicula().getNombre()%> -
+
+                            <%if (c.getTresD()==1){%>
+                            3D
+                            <%}%>
+
+                            <%if (c.getSubtitulada()==1){%>
+                            Subtitulada
+                            <%}%>
+
+                            <%if (c.getDoblada()==1){%>
+                            Doblada
+                            <%}%>
+
+                        </td>
+                        <td><%=c.getHorario()%></td>
                     </tr>
+                    <%}%>
                 </tbody>
             </table>
         </div>

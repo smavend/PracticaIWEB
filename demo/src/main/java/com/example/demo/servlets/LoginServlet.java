@@ -30,6 +30,9 @@ public class LoginServlet extends HttpServlet {
                 vista.forward(request, response);
 
                 break;
+
+            case "logout":
+                break;
         }
 
     }
@@ -42,12 +45,12 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher vista;
 
 
-        int idEmpleado = Integer.parseInt(request.getParameter("usuario"));
+        String dni = request.getParameter("usuario");
         double password = Double.parseDouble(request.getParameter("password"));
 
-        if (daoEmpleado.validarEmpleado(idEmpleado, password)){
+        if (daoEmpleado.validarEmpleado(dni, password)){
 
-            Empleado empleado = daoEmpleado.buscarEmpleado(idEmpleado);
+            Empleado empleado = daoEmpleado.buscarEmpleadoDni(dni);
 
             switch (empleado.getRol().getNombre()){
                 case "admin":
@@ -62,6 +65,9 @@ public class LoginServlet extends HttpServlet {
 
                     ArrayList<Cartelera> cartelera = daoCartelera.obtenerCartelera();
                     request.setAttribute("cartelera", cartelera);
+
+                    HttpSession session = request.getSession();
+                    session.setAttribute("empleado", empleado);
 
                     vista = request.getRequestDispatcher("vendedor.jsp");
                     vista.forward(request, response);
