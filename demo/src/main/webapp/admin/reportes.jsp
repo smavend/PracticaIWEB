@@ -1,7 +1,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:useBean id="cliente" scope="session" type="com.example.lab10.bean.Cliente" class="com.example.lab10.bean.Cliente"/>
+<jsp:useBean id="reporte" scope="session" type="com.example.demo.dtos.Reporte" class="com.example.demo.dtos.Reporte"/>
 
 <html>
 <head>
@@ -23,19 +23,19 @@
         <tbody>
         <tr>
             <th scope="row">Cantidad de empleados sin jefe</th>
-            <td><%=//cliente.getNombreCliente()%></td>
+            <td><%=reporte.getCantEmpreadosSinJefes()%></td>
         </tr>
         <tr>
             <th scope="row">Cantidad de películas en 3D</th>
-            <td><%=//cliente.getEdad()%></td>
+            <td><%=reporte.getCantPeli3D()%></td>
         </tr>
         <tr>
             <th scope="row">Cantidad de cines br </th>
-            <td><%=//cliente.getTipoCliente()%></td>
+            <td><%=reporte.getCantCinesSalario9700()%></td>
         </tr>
         <tr>
-            <th scope="row"> Cadena de cine con la mayor cantidad de películas en cartelera</th>
-            <td><%=//cliente.getNumDocumento()%></td>
+            <th scope="row"> Cadena de cine con mas  <br> películas en cartelera </th>
+            <td><%=reporte.getCineConMasCartelera()%></td>
         </tr>
 
         </tbody>
