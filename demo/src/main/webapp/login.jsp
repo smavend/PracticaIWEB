@@ -21,14 +21,14 @@
         <h2 class="text-center mb-4 text-primary">Inicio de Sesión</h2>
         <form method="POST" action="<%=request.getContextPath()%>/Login" >
             <div class="mb-3">
-                <label for="nro_documento" class="form-label">Numero de Documento</label>
-                <input type="number" class="form-control border border-primary" id="nro_documento" aria-describedby="emailHelp" name ="nro_documento" required>
+                <label for="nro_documento" class="form-label">Usuario</label>
+                <input type="number" class="form-control border border-primary" id="nro_documento" aria-describedby="emailHelp" name ="usuario" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
                 <input type="password" class="form-control border border-primary" id="password" name="password" required>
                 <%if(session.getAttribute("error")!=null){%>
-                <b class="text-danger small">Datos erróneos</b>
+                <b class="text-danger small"><%=session.getAttribute("error")%></b>
                 <% session.removeAttribute("error");
                 }%>
             </div>
