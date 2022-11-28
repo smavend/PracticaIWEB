@@ -8,10 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Inicio</title>
+        <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'/>
     </head>
     <body>
-        <jsp:include page="includes/navbarAdmin.jsp"></jsp:include>
+        <jsp:include page="includes/navbarAdmin.jsp">
+            <jsp:param name="currentPage" value="datos"/>
+        </jsp:include>
         <div class='container'>
             <div class="row mb-5 mt-4">
                 <div class="col-lg-6">
