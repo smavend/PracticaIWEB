@@ -1,5 +1,6 @@
 package com.example.demo.daos;
 
+import com.example.demo.beans.Cine;
 import com.example.demo.beans.Empleado;
 
 import java.math.BigDecimal;
@@ -13,6 +14,8 @@ public class DaoEmpleado extends DaoBase{
     public Empleado buscarEmpleado (int idEmpleado, BigDecimal passw){
         Empleado empleado = null;
         String sql = "SELECT * FROM empleado where idempleado = ? and dni-salario = ?";
+        DaoCine daoCine = new DaoCine();
+
         try(Connection connection = this.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql)){
             pstmt.setInt(1,idEmpleado);
@@ -29,6 +32,7 @@ public class DaoEmpleado extends DaoBase{
                     empleado.setNombreUsuario(rs.getString(7));
                     empleado.setEdad(rs.getInt(8));
                     empleado.setActivo(rs.getInt(9) == 1);
+                    Cine cine = daoCine.obtenerCine();
                     empleado.setCine();
                 }
             }
